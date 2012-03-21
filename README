@@ -1,0 +1,18 @@
+Problem:
+ You have a couple (or a ton!) of machines logging to a central syslog server. This is great but you quickly realize that the amount of data is quite overwhelming for any amount of analysis. Moreover, while you could write some good regex to find some of the things you are looking for it would take quite awhile to get every iteration of faild login attempt log entry since even different versions of the same OS can change they way they log and how they log it. 
+
+This is where this project can help. By leveraging OSSEC we can produce daily activity reports not unlike the LogWatch utility for many machines allowing you to quickly sift through the data and get the information you want. 
+
+Some technical:
+OSSEC has a robust syslog parsing engine that can classify a large number of syslog entries by severity level and type but it mainly uses this to send e-mail alerts. This project takes the classification engine and runs it against a days worth of syslog entries to produce a report.
+
+Our data points for each syslog entry include:
+* tags
+* severity level
+* source ip (if any)
+* OSSEC rule
+* syslog host reporting
+* user (if any)
+
+Use:
+Just run the Python script specifying a syslog log file and a output directory, then copy the js/ and images/ folders into that directory and view in a web browser. 
